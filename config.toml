@@ -1,0 +1,14 @@
+baseURL = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com/"
+languageCode = "en-us"
+title = "Connor Hillerby"
+theme = "m10c"
+
+[params]
+  author = "Connor Hillerby"
+  description = "Euans website is GARBAGE!"
+  [[params.social]]
+    name = "chillerby"
+    url  = "https://github.com/chillerby"
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/conz2205"
