@@ -5,7 +5,7 @@ theme = "m10c"
 
 [params]
   author = "Connor Hillerby"
-  description = "Euans website is GARBAGE!"
+  description = "To showcase work"
   [[params.social]]
     name = "chillerby"
     url  = "https://github.com/chillerby"
