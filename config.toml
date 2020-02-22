@@ -1,14 +1,53 @@
-baseURL = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com/"
+baseurl = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com"
 languageCode = "en-us"
-title = "Connor Hillerby"
-theme = "m10c"
+theme = "hello-friend-ng"
 
 [params]
-  author = "Connor Hillerby"
-  description = "To showcase work"
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Metadata mostly used in document's head
+  description = "My new homepage or blog"
+  keywords = "homepage, blog"
+  images = [""]
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "content/posts"
+
+  # Default theme "light" or "dark"
+  defaultTheme = "dark"
+
   [[params.social]]
-    name = "chillerby"
+    name = "github"
     url  = "https://github.com/chillerby"
+
   [[params.social]]
-    name = "twitter"
-    url  = "https://twitter.com/conz2205"
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/connor-hillerby-80660282/"
+
+[languages]
+  [languages.en]
+    title = "Welcome to my website!"
+    subtitle = "A simple theme for Hugo"
+    keywords = ""
+    copyright = ""
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "$ cd ~/"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
