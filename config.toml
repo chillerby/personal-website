@@ -1,4 +1,4 @@
-baseurl = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com/"
+baseurl = "http://connor.hillerby.com/"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
