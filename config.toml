@@ -33,7 +33,7 @@ theme = "hello-friend-ng"
 [languages]
   [languages.en]
     title = "Welcome to my website!"
-    subtitle = "A simple theme for Hugo"
+    subtitle = "Connor Hillerby"
     keywords = ""
     copyright = ""
     readOtherPosts = "Read other posts"
@@ -51,6 +51,10 @@ theme = "hello-friend-ng"
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about"
 
 [deployment]
   # By default, files are uploaded in an arbitrary order.
@@ -100,3 +104,6 @@ theme = "hello-friend-ng"
   #[[deployment.matchers]]
   #  pattern = "^.+\\.(html|xml|json)$"
   #  gzip = true
+
+[author]
+  name = "Connor Hillerby"
