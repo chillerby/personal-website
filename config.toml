@@ -1,4 +1,4 @@
-baseurl = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com"
+baseurl = "http://chillerby-dev.s3-website.eu-west-2.amazonaws.com/"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
@@ -61,14 +61,14 @@ theme = "hello-friend-ng"
 
   [[deployment.targets]]
     # An arbitrary name for this target.
-    name = "uploadS3"
+    name = "connor.hillerby.com"
     # The Go Cloud Development Kit URL to deploy to. Examples:
     # GCS; see https://gocloud.dev/howto/blob/#gcs
     # URL = "gs://<Bucket Name>"
 
     # S3; see https://gocloud.dev/howto/blob/#s3
     # For S3-compatible endpoints, see https://gocloud.dev/howto/blob/#s3-compatible
-    URL = "s3://chillerby-dev?region=eu-west-2"
+    URL = "s3://connor.hillerby.com?region=eu-west-2"
 
     # Azure Blob Storage; see https://gocloud.dev/howto/blob/#azure
     # URL = "azblob://$web"
