@@ -1,20 +1,47 @@
 # Hello Friend NG
 
-![Hello Friend NG](https://dsh.re/d27822)
+![Hello Friend NG](https://dsh.re/d914c)
 
 ## General informations
 
-This theme was highly inspired by the [hello-friend](https://github.com/panr/hugo-theme-hello-friend) and [hermit](https://github.com/Track3/hermit). A lot of kudos for theier great work.
+This theme was highly inspired by the [hello-friend](https://github.com/panr/hugo-theme-hello-friend) and [hermit](https://github.com/Track3/hermit). A lot of kudos for their great work.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [How to start](#how-to-start)
+- [How to configure](#how-to-configure)
+- [More](#more-things)
+  - [Built in shortcodes](#built-in-shortcodes)
+    - [image](#image)
+  - [Code highlighting](#code-highlighting)
+  - [Favicon](#favicon)
+  - [Audio Support](#audio-support)
+- [Social Icons](#social-icons)
+- [Known issues](#known-issues)
+- [How to edit the theme](#how-to-edit-the-theme)
+- [Changelog](CHANGELOG.md)
+- [Sponsoring](#sponsoring)
+- [Licence](#licence)
+
+---
 
 ## Features
 
-- Theming: **dark/light mode**, depending on your preferences (dark is default, but you can change it)
-- Great reading experience thanks to [**Inter UI font**](https://rsms.me/inter/), made by [Rasmus Andersson](https://rsms.me/about/)
+- Theming: **dark/light mode**, depending on your system preferences or the users choice
+- Great reading experience thanks to [**Inter font**](https://rsms.me/inter/), made by [Rasmus Andersson](https://rsms.me/about/)
 - Nice code highlighting thanks to [**PrismJS**](https://prismjs.com)
 - An easy way to modify the theme with Hugo tooling
 - Fully responsive
+- Support for audio in posts (thanks to [@talbotp](https://github.com/talbotp))
+- Builtin (enableable/disableable) multilanguage menu
 - Support for social icons
-
+- Support for sharing buttons
+- Support for [Commento](https://commento.io)
+- Support for [Plausible](https://plausible.io) (thanks to [@Joffcom](https://github.com/Joffcom))
+- Support for [utterances](https://utteranc.es/) comment system
 
 ## How to start
 
@@ -23,52 +50,65 @@ You can download the theme manually by going to [https://github.com/rhazdon/hugo
 You can also clone it directly to your Hugo folder:
 
 ``` bash
-$ git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
 ```
 
 If you don't want to make any radical changes, it's the best option, because you can get new updates when they are available. To do so, include it as a git submodule:
 
 ``` bash
-$ git submodule add https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+git submodule add https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
 ```
 
 ## How to configure
 
 The theme doesn't require any advanced configuration. Just copy the following config file.
+To see all possible configurations, [check the docs](docs/config.md).
 Note: There are more options to configure. Take a look into the `config.toml` in `exampleSite`.
 
 ``` toml
-baseurl = "/"
+baseurl      = "localhost"
+title        = "My Blog"
 languageCode = "en-us"
-theme = "hello-friend-ng"
+theme        = "hello-friend-ng"
+pagination.pagerSize     = 10
 
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04 -0700"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "A simple and beautiful blog"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = true
+  
+  # Show a global language switcher in the navigation bar
+  enableGlobalLanguageMenu = true
 
   # Metadata mostly used in document's head
   description = "My new homepage or blog"
   keywords = "homepage, blog"
   images = [""]
 
-  # Directory name of your blog content (default is `content/posts`)
-  contentTypeName = "posts"
-
-  # Default theme "light" or "dark"
-  defaultTheme = "dark"
+[taxonomies]
+    category = "blog"
+    tag      = "tags"
+    series   = "series"
 
 [languages]
   [languages.en]
     title = "Hello Friend NG"
-    subtitle = "A simple theme for Hugo"
     keywords = ""
-    copyright = ""
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
+
+  [languages.en.params]
+    subtitle  = "A simple theme for Hugo"
 
     [languages.en.params.logo]
       logoText = "hello friend ng"
@@ -83,23 +123,28 @@ theme = "hello-friend-ng"
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+
+  # and submenus
+  [[menu.main]]
+    identifier  = "parent"
+    name        = "Parent"
+    url         = "/parent"
+    hasChildren = true
+
+  [[menu.main]]
+    identifier  = "child"
+    name        = "Child"
+    url         = "/parent/child"
+    parent      = "parent"
 ```
-
-## How to run your site
-
-From your Hugo root directory run:
-
-```
-$ hugo server -t hello-friend-ng
-```
-
-and go to `localhost:1313` in your browser. From now on all the changes you make will go live, so you don't need to refresh your browser every single time.
 
 ## More things
 
 ### Built-in shortcodes
 
-#### `image`
+Of course you are able to use all default shortcodes from hugo (https://gohugo.io/content-management/shortcodes/).
+
+#### image
 
 Properties:
 
@@ -114,27 +159,7 @@ Example:
 {{< image src="/img/hello.png" alt="Hello Friend" position="center" style="border-radius: 8px;" >}}
 ```
 
-#### `figure`
-
-Properties:
-
-  - `src` (required)
-  - `alt` (optional)
-  - `position` (optional, default: `left`, options: [`left`, `center`, `right`])
-  - `style` (optional)
-  - `caption` (optional)
-  - `captionPosition` (optional, default: `center`, options: [`left`, `center`, `right`]),
-  - `captionStyle` (optional)
-
-Example:
-
-``` golang
-{{< figure src="/img/hello.png" alt="Hello Friend" position="center" style="border-radius: 8px;" caption="Hello Friend!" captionPosition="right" captionStyle="color: red;" >}}
-```
-
 ### Code highlighting
-
-Supported languages: [Take a look here](https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+c+arff+asciidoc+asm6502+csharp+autohotkey+autoit+bash+basic+batch+bison+brainfuck+bro+cpp+aspnet+arduino+cil+coffeescript+clojure+ruby+csp+css-extras+d+dart+diff+markup-templating+docker+eiffel+elixir+elm+lua+erb+erlang+fsharp+flow+fortran+gcode+gedcom+gherkin+git+glsl+gml+go+graphql+groovy+less+handlebars+haskell+haxe+hcl+http+hpkp+hsts+ichigojam+icon+inform7+ini+io+j+java+scala+php+javastacktrace+jolie+n4js+markdown+json+julia+keyman+kotlin+latex+crystal+scheme+liquid+lisp+livescript+lolcode+makefile+django+matlab+mel+mizar+monkey+n1ql+typescript+nand2tetris-hdl+nasm+nginx+nim+nix+nsis+objectivec+ocaml+opencl+oz+parigp+parser+pascal+perl+php-extras+sql+powershell+processing+prolog+properties+protobuf+scss+puppet+pure+python+q+qore+r+jsx+renpy+reason+vala+rest+rip+roboconf+textile+rust+plsql+sass+stylus+smalltalk+smarty+soy+sas+twig+swift+yaml+tcl+haml+toml+tt2+pug+tsx+visual-basic+vbnet+velocity+verilog+vhdl+vim+wasm+wiki+xeora+xojo+xquery+tap)
 
 By default the theme is using PrismJS to color your code syntax. All you need to do is to wrap you code like this:
 
@@ -146,49 +171,35 @@ By default the theme is using PrismJS to color your code syntax. All you need to
 
 ### Favicon
 
-Use [RealFaviconGenerator](https://realfavicongenerator.net/) to generate these files, put them into your site's static folder:
+Check the [docs](docs/favicons.md).
 
-- android-chrome-192x192.png
-- android-chrome-512x512.png
-- apple-touch-icon.png
-- favicon-16x16.png
-- favicon-32x32.png
-- favicon.ico
-- mstile-150x150.png
-- safari-pinned-tab.svg
-- site.webmanifest
+### Audio Support
 
+You wrote an article and recorded it? Or do you have a special music that you would like to put on a certain article? Then you can do this now without further ado.
 
+In your article add to your front matters part:
 
-## Available Social Icons:
+```yaml
+audio: path/to/file.mp3
+```
 
-- [codechef](https://simpleicons.org/?q=codechef)
-- [codepen](https://simpleicons.org/?q=codepen)
-- [docker](https://simpleicons.org/?q=docker)
-- [email](https://feathericons.com/?query=mail)
-- [facebook](https://simpleicons.org/?q=facebook)
-- gitbook
-- [github](https://feathericons.com/?query=github)
-- [gitlab](https://feathericons.com/?query=gitlab)
-- [instagram](https://feathericons.com/?query=instagram)
-- [kaggle](https://simpleicons.org/?q=kaggle)
-- [keybase](https://simpleicons.org/?q=keybase)
-- [mastodon](https://simpleicons.org/?q=mastodon)
-- [linkedin](https://feathericons.com/?query=linked)
-- [podcasts-apple](https://simpleicons.org/?q=podcast)
-- [podcasts-google](https://simpleicons.org/?q=podcast)
-- [slack](https://simpleicons.org/?q=slack)
-- stackoverflow
-- telegram
-- twitch
-- twitter
-- youtube
+## Social Icons:
+
+A large variety of social icons are available and can be configured like this:
+
+```toml
+[[params.social]]
+  name = "<site>"
+  url = "<profile_URL>"
+```
+
+Take a look into this [list](docs/svgs.md) of available icon options. 
 
 If you need another one, just open an issue or create a pull request with your wished icon. :)
 
 ## Known issues
 
-There is a bug in Hugo that sometimes causes the main page not to render correctly. The reason is an empty taxonomy part.
+There is a bug in Hugo that sometimes causes the main page not to render correctly. The reason is an taxonomy part with empty entries.
 Related issue tickets: [!14](https://github.com/rhazdon/hugo-theme-hello-friend-ng/issues/14) [!59](https://github.com/rhazdon/hugo-theme-hello-friend-ng/issues/59).
 
 Either you comment it out completely or you write the following in
@@ -199,29 +210,23 @@ Either you comment it out completely or you write the following in
   category = "categories"
 ```
 
+In case you'd like to actually have an empty taxonomy, you can do so by specifying the following (i.e. without adding any entries to the taxonomy part):
+
+``` toml
+[taxonomies]
+```
+
 ## How to edit the theme
 
-If you really want to edit the theme, you need to install Node dependencies. To do this, go to the theme directory (from your Hugo root directory):
+Just edit it. You don't need any node stuff. ;)
 
-```
-$ cd themes/hello-friend-ng
-```
+## Sponsoring
 
-and then run:
-
-```
-$ npm install
-```
-
-## Third Party
-
-  - [normalize.css](https://github.com/necolas/normalize.css)
-  - [Feather Open Source Icons](https://github.com/feathericons/feather)
-  - [Simple Icons](https://simpleicons.org/)
-  - [Flag Icon](https://github.com/lipis/flag-icon-css)
+If you like my work and if you think this project is worth to support it, just <br />
+<a href="https://www.buymeacoffee.com/djordjeatlialp" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-green.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
 
 ## Licence
 
-Copyright © 2019-2020 Djordje Atlialp
+Copyright © 2019-2025 Djordje Atlialp
 
 The theme is released under the MIT License. Check the [original theme license](https://github.com/rhazdon/hugo-theme-hello-friend-ng/blob/master/LICENSE.md) for additional licensing information.
