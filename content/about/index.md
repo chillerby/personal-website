@@ -1,6 +1,6 @@
 ---
 title: "About"
-date: 2020-02-23T17:58:25Z
+date: 2026-02-14T15:05:25Z
 ---
 
-I'm Connor Hillerby and I am currently working as a DevOps engineer for Turnitin.
+My name's Connor and I'm currently a Senior DevOps Engineer at Turnitin. This site will showcase anything I find interesting both personally and professionally. 
