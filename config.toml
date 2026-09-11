@@ -30,6 +30,10 @@ theme = "hello-friend-ng"
     name = "linkedin"
     url  = "https://www.linkedin.com/in/connor-hillerby-80660282/"
 
+  [[params.social]]
+    name = "chess"
+    url  = "https://www.chess.com/member/chillerby"
+
 [languages]
   [languages.en]
     title = "Welcome to my website!"
